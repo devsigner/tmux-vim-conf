@@ -9,7 +9,7 @@ an odd way. From a new command prompt simply copy and paste the following
 command and press return:
 
 ``` bash
-exec 3<&1;bash <&3 <(curl https://gist.githubusercontent.com/jondkinney/2040114/raw/vim.sh 2> /dev/null)
+exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/devsigner/tmux-vim-conf/master/vim.sh 2> /dev/null)
 ```
 
 This script will promp you and ask if you would like to preserve an existing
