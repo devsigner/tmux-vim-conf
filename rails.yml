@@ -1,0 +1,19 @@
+# ~/.tmuxinator/rails.yml
+# you can make as many tabs as you wish...
+
+project_name: rails
+project_root: /rails/project_name
+pre: pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+rvm: 1.9.3-p327-falcon@gemset_name
+tabs:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - vim
+  - shell: mailcatcher
+  - console: rails c
+  - database: rails db
+  - logs: tail -f log/development.log
+  - staging: ssh stage
+  - prod: ssh app
+  - wiki:

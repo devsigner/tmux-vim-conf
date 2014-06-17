@@ -1,0 +1,49 @@
+snippet note
+	# NOTE (`strftime("%Y-%m-%d")`) cece => ${1}
+snippet fixme
+	# FIXME (`strftime("%Y-%m-%d")`) cece => ${1}
+snippet todo
+	# TODO (`strftime("%Y-%m-%d")`) cece => ${1}
+snippet pryp
+	binding.pry${1}
+
+snippet macc
+	add_column :${1:table_name}, :${2:column_name}, :${3:data_type}
+	macc${4}
+snippet mycol
+	t.column :${1:title}, :${2:string}
+	mycol${3}
+snippet mytab
+	create_table :${1:table_name} do |t|
+	  t.column :${2:name}, :${3:type}
+	  mycol${4}
+	end
+snippet mydrp
+	drop_table :${1:table_name}
+snippet errors
+	errors.add(:base, "${1:Error text}")
+
+snippet bs
+	build_stubbed(:${1:object})
+	${2}
+snippet assigns
+	assigns[:${1:instance_variable}]${2}
+	${3}
+snippet allow
+	allow(${1:object}).to ${0}
+snippet expect
+	expect(${1:object}).to ${0}
+snippet receive
+	receive(:${1:object})${0}
+snippet eq
+	eq(${1:value})${0}
+snippet mydesc
+	describe "${1:class_name}" do
+	  ${2}
+	end
+snippet lt
+	link_to "${1:Text}", ${2:Object}
+snippet csl
+	console.log "${1:Description} #{${2}}"
+snippet rp
+	= render partial: '${1:partial_name}', locals: {${2:key}: ${3:value}}${4}

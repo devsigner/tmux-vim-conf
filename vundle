@@ -1,0 +1,221 @@
+set nocompatible               " be iMproved
+
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+autocmd! bufwritepost vundle source ~/.vim/vundle
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" project wide search
+Bundle 'mileszs/ack.vim'
+
+" cmd-t replacement
+Bundle 'kien/ctrlp.vim'
+
+" comment multiple lines
+Bundle 'scrooloose/nerdcommenter'
+
+" project drawer
+Bundle 'scrooloose/nerdtree'
+
+" makes NERDTree awesome if you use tabs
+Bundle 'jistr/vim-nerdtree-tabs'
+
+" tab completion like textmate for snippets
+Bundle 'garbas/vim-snipmate'
+
+" vim-snipmate dependency
+Bundle 'tomtom/tlib_vim'
+
+" vim-snipmate dependency
+Bundle 'MarcWeber/vim-addon-mw-utils'
+
+" vim-snipmate dependency
+Bundle 'honza/vim-snippets'
+
+" TODO think about removing this
+Bundle 'ervandew/supertab'
+
+" syntax checking on save
+Bundle 'scrooloose/syntastic'
+
+" aligning => stuff
+Bundle 'godlygeek/tabular'
+" Bundle 'junegunn/vim-easy-align'
+
+" drawer showing ctags
+Bundle 'majutsushi/tagbar'
+
+" easily switch between buffers
+Bundle 'jeetsukumaran/vim-buffergator'
+
+" enabled .feature files
+Bundle 'tpope/vim-cucumber'
+
+" <leader><leader>w jump to highlighted word
+Bundle 'Lokaltog/vim-easymotion'
+
+" auto adds end to method definitions, blocks, etc
+Bundle 'tpope/vim-endwise'
+
+" git wrapper
+Bundle 'tpope/vim-fugitive'
+
+" some vim runtime files that are more up to date than those distributed with vim itself
+Bundle 'tpope/vim-git'
+
+"  enabled .haml extension
+Bundle 'tpope/vim-haml'
+
+" show indent guides to the left of the methods
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" some nice text wrappers for editing erb or html, ctrl+x in insert mode then type = or - or @ or #,etc
+Bundle 'tpope/vim-ragtag'
+
+" essential rails plugin for navigating a rails proj
+Bundle 'tpope/vim-rails'
+
+" easily change what something is surrounded by
+Bundle 'tpope/vim-surround'
+
+" repeat surround (and other) changes with .
+Bundle 'tpope/vim-repeat'
+
+" allows for moving blocks of text up and down in place like you could in textmate
+Bundle 'tpope/vim-unimpaired'
+
+" theme
+Bundle 'altercation/vim-colors-solarized'
+
+" lets you ctrl+w+o to toggle out a split to it's own buffer (easily can go back with the same command)
+Bundle 'vim-scripts/ZoomWin'
+
+" highlight code and send to pastie service
+Bundle 'tpope/vim-pastie'
+
+" send vim commands (or text) to adjacent tmux pane
+Bundle 'benmills/vimux'
+
+" sends focused tests to vimux with <leader>t
+Bundle 'jgdavey/vim-turbux'
+
+" tpope answer to vimux (sends commands to tmux pane)
+"Bundle 'tpope/vim-dispatch'
+
+" thoughtbot vim-rspec send to vim-dispatch, etc
+Bundle 'thoughtbot/vim-rspec'
+
+" show project wide list of TODO, NOTE, FIXME
+Bundle 'LStinson/TagmaTasks'
+
+" strip trailing whitespace on save
+Bundle 'itspriddle/vim-stripper'
+
+" enable coffeescript
+Bundle 'kchmck/vim-coffee-script'
+
+" highlights Gemfile and wraps bundle open
+Bundle 'tpope/vim-bundler'
+
+" tig inside of vim with more power to traverse file history
+Bundle 'gregsexton/gitv'
+
+" refactor model names
+Bundle 'tpope/vim-abolish'
+
+" cycle through yanks/deletes in a visual window or after pasting
+Bundle 'vim-scripts/YankRing.vim'
+
+" undo tree history navigation
+Bundle 'sjl/gundo.vim'
+
+" Gist things
+Bundle 'mattn/gist-vim'
+
+" dependency of gist-vim
+Bundle 'mattn/webapi-vim'
+
+" better vertical column selection / changing (vic will visual in column)
+Bundle 'coderifous/textobj-word-column.vim'
+
+" show diff in the left gutter
+"Bundle 'airblade/vim-gitgutter'
+
+" intelligent session management. Auto writes changes when opening splits or quitting Vim
+Bundle 'tpope/vim-obsession'
+
+" gives a count of the number of matches and which one you're on
+" Bundle 'jondkinney/vim-indexed-search' " I added the ability to not jump to the next item immediately, but it has since been merged back.
+Bundle 'henrik/vim-indexed-search'
+
+" Don't jump to the next search, stay on current one
+Bundle 'bronson/vim-visual-star-search'
+
+" ensures windows are at least 80 chars wide
+Bundle 'justincampbell/vim-eighties'
+
+" lets you type new things for each search replacement
+Bundle 'hwrod/interactive-replace'
+
+" navigate with C-h/j/k/l in tmux and vim
+Bundle 'christoomey/vim-tmux-navigator'
+
+" like sublime multiple cursors
+Bundle 'terryma/vim-multiple-cursors'
+
+" powerline for tmux/vim
+Bundle 'Lokaltog/powerline'
+
+" note taking
+Bundle 'xolox/vim-notes'
+Bundle 'xolox/vim-misc'
+" Bundle 'xolox/vim-shell'
+
+" Execute lines of code in Vim and show the results
+Bundle 't9md/vim-ruby-xmpfilter'
+
+" Select ruby blocks
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'kana/vim-textobj-user'
+
+" Ruby fun
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rake'
+
+" RSpec syntax highlighting improvements
+Bundle 'jondkinney/rspec.vim'
+
+" Holy grail of completion?
+" Bundle 'Valloric/YouCompleteMe'
+
+" Markdown
+Bundle 'tpope/vim-markdown'
+
+" Remote pairing
+Bundle 'Floobits/floobits-vim'
+
+" Drag Visuals
+Bundle 'jondkinney/dragvisuals.vim'
+
+" Vmath
+Bundle 'jondkinney/vmath.vim'
+
+" Vim-airline
+Bundle 'bling/vim-airline'
+
+" Slim template syntax highlighting
+Bundle 'slim-template/vim-slim'
+
+" Dash docs
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+
+" Browser Reloading from Vim
+Bundle 'tell-k/vim-browsereload-mac'
+Bundle 'Shougo/vimproc.vim'
