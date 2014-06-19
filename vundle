@@ -198,7 +198,7 @@ Bundle 'jondkinney/rspec.vim'
 Bundle 'tpope/vim-markdown'
 
 " Remote pairing
-Bundle 'Floobits/floobits-vim'
+"Bundle 'Floobits/floobits-vim'
 
 " Drag Visuals
 Bundle 'jondkinney/dragvisuals.vim'
