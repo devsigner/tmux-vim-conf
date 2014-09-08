@@ -42,9 +42,9 @@ set wildmode=list:longest       "tab complete to longest common string, like bas
 
 set wildignore+=*/production_data/*,*/coverage/*,*/accredited_investor_questionnaires/*,*/HTML_DEMOS/*,*/docusign_docs/*,*/cookbooks/*,*/public/uploads/*,*/public/images/*,*/vim_sessions/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-"set mouse-=a                   "disable mouse automatically entering visual mode
-set mouse=a                     "Enable mouse support in the terminal VIM and activate visual mode with dragging
-" fix mouse support inside tmux
+set mouse-=a                   "disable mouse automatically entering visual mode
+
+"" fix mouse support inside tmux
 if &term =~ '^screen'
   " tmux knows the extended mouse mode
   set ttymouse=xterm2
@@ -85,11 +85,10 @@ au FocusLost * :silent! wall
 au VimResized * :wincmd =
 
 
-
 let mapleader = ","   "remap leader to ',' which is much easier than '\'
 let maplocalleader = "\\" "add a local leader of '\'
 
-:set guifont=Monaco\ for\ Powerline:h12
+"set guifont=Monaco\ for\ Powerline
 
 " Open NERDTree with [<leader>d]
 map <Leader>d :NERDTreeTabsToggle<CR>
@@ -105,6 +104,10 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 "resizes nerdtree if you're cursor is not actually in nerdtree (needs to be to the right of it)
 map <leader>5 99+ 51_ j k
+
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
 
 " CtrlP
@@ -132,13 +135,11 @@ map <Leader><C-f> :Ack!<space>
 
 "colorscheme solarized
 colorscheme railscasts
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-" Toggles the background from dark to light
-" call togglebg#map("<F5>")
+" always display the status line
+:set laststatus=2
 
-     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+     "set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
      "              | | | | |  |   |      |  |     |    |
      "              | | | | |  |   |      |  |     |    + current
      "              | | | | |  |   |      |  |     |       column
@@ -153,8 +154,25 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
      "              | | +-- readonly flag in square brackets
      "              | +-- modified flag in square brackets
      "              +-- full path to file in the buffer
- " }
 
+     " statusline
+     " cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+     " format markers:
+     "   %< truncation point
+     "   %n buffer number
+     "   %f relative path to file
+     "   %m modified flag [+] (modified), [-] (unmodifiable) or nothing
+     "   %r readonly flag [RO]
+     "   %y filetype [ruby]
+     "   %= split point for left and right justification
+     "   %-35. width specification
+     "   %l current line number
+     "   %L number of lines in buffer
+     "   %c current column number
+     "   %V current virtual column number (-n), if different from %c
+     "   %P percentage through buffer
+     "   %) end of width specification
+     set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
 
 "SHOW INVISIBLES
@@ -165,11 +183,11 @@ nmap <leader>il :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 "256 colors support
-set t_Co=256
+"set t_Co=256
 
 "Right margin settings for vim 7.2 or greater
 if version > 702
-  set colorcolumn=120
+  set colorcolumn=150
 endif
 
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal colorcolumn=51
@@ -192,13 +210,7 @@ au BufNewFile,BufRead COMMIT_EDITMSG setlocal colorcolumn=51
 noremap <leader>- :sp<CR><C-w>j
 noremap <leader>\| :vsp<CR><C-w>l
 
-" Navivate split
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
-" Allow resizing splits with =/- for up/down and +/_ right/left (repeatable w/hold too)
 if bufwinnr(1)
   map = <C-W>+
   map - <C-W>-
@@ -335,9 +347,10 @@ map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 " Underline the current line with '='
+"=====================================
 nmap <silent> <localleader>= :t.\|s/./=/g\|:nohls<cr>
-
 " underline the current line with '-'
+"-------------------------------------
 nmap <silent> <localleader>- :t.\|s/./-/g\|:nohls<cr>
 
 " set text wrapping toggles
@@ -640,8 +653,11 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Exit out of insert with jj
-inoremap jj <ESC>
+" Exit out of insert and insert a new line before with JJ
+inoremap JJ <ESC>O
+
+" Exit out of insert and insert a new line with jj
+inoremap jj <ESC>o
 
 " Dig through the tree of undo possibilities for your current file
 nnoremap <F3> :GundoToggle<CR>
@@ -709,6 +725,12 @@ function! TmuxWinCmd(direction)
   endif
 endfunction
 
+" Vim: Navivate split
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
 
 let g:tmux_navigator_no_mappings = 1
 " navigate between split windows/tmux panes
@@ -733,6 +755,11 @@ nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
 " This rewires n and N to do the highlighing...
 nnoremap <silent> n   n:call HLNext(0.4)<cr>
 nnoremap <silent> N   N:call HLNext(0.4)<cr>
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 
 "" OR ELSE just highlight the match in red...
 "function! HLNext (blinktime)
@@ -780,10 +807,6 @@ endfunction
 "nnoremap <c-]> <c-]>mzzvzz15<cr>
 "nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<cr>
 
-" Keep search matches in the middle of the window.
-"nnoremap n nzzzv
-"nnoremap N Nzzzv
-
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
@@ -826,11 +849,11 @@ augroup END
 " <m-j> and <m-k> to drag lines in any mode (m is alt/option)
 " this is the textmate move lines around thing that I used to do do with arrow
 " keys but less fragile because it works in tmux or not
-noremap ∆ :m+<CR>
+noremap ˝ :m+<CR>
 noremap ˚ :m-2<CR>
-inoremap ∆ <Esc>:m+<CR>
+inoremap ˝ <Esc>:m+<CR>
 inoremap ˚ <Esc>:m-2<CR>
-vnoremap ∆ :m'>+<CR>gv
+vnoremap ˝ :m'>+<CR>gv
 vnoremap ˚ :m-2<CR>gv
 
 " Dragvisuals from Damian Conway
